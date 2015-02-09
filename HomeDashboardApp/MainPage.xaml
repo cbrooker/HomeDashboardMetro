@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Controls="using:WinRTXamlToolkit.Controls"
+    xmlns:Gauges="using:Syncfusion.UI.Xaml.Gauges"
     x:Name="pageRoot"
     x:Class="HomeDashboardApp.MainPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Mode=Self}}"
@@ -24,8 +25,13 @@
         </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="160" Margin="69,122,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="160" Margin="409,189,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="159" Margin="409,30,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="340"/>
 
         <!-- Back button and page title -->
         <Grid>
@@ -41,11 +47,41 @@
 				AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="Home Dashboard" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
 				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            
+            
         </Grid>
 
-        <Controls:Gauge x:Name="Gauge1" HorizontalAlignment="Left" Height="201" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="201" ValueStringFormat="00.0" Unit="c" Maximum="30" NeedleBrush="#FF46FF00" TrailBrush="#FF46FF00"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="122,284,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"/>
-        <Controls:Gauge x:Name="Gauge2" HorizontalAlignment="Left" Height="201" Margin="261,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="201" RequestedTheme="Light" ValueStringFormat="00.0" Unit="c" Maximum="30" />
+        <!--<Gauges:SfLinearGauge x:Name="Testgauge" HorizontalAlignment="Left" Margin="820,48,0,0" Grid.Row="1" VerticalAlignment="Top" Orientation="Vertical">
+            <Gauges:SfLinearGauge.MainScale>
+                <Gauges:LinearScale/>
+            </Gauges:SfLinearGauge.MainScale>
+        </Gauges:SfLinearGauge>-->
+
+        <Gauges:SfLinearGauge x:Name="SfLinearGauge1" Grid.Row="0" Grid.RowSpan="2"  Orientation="Horizontal" VerticalAlignment="Stretch" >
+            <Gauges:SfLinearGauge.MainScale>
+                <Gauges:LinearScale x:Name="LinearScale1" ScaleDirection="Forward" ScaleBarLength="350"  
+                                            ScaleBarSize="40" ScaleBarStroke="Transparent"
+                                            Minimum="10" Maximum="28" Interval="1" MinorTicksPerInterval="1"
+                                            MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+                                            MajorTickStroke="#c1c1c1" MinorTickStroke="#c1c1c1" LabelStroke="#999999"
+                                            RangePosition="Above" TickPosition="Above" LabelPosition="Above">
+                    <Gauges:LinearScale.Pointers>
+                        <Gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+                    </Gauges:LinearScale.Pointers>
+                    <Gauges:LinearScale.Ranges>
+                        <Gauges:LinearRange StartValue="10" EndValue="17" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"></Gauges:LinearRange>
+                        <Gauges:LinearRange StartValue="17" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" ></Gauges:LinearRange>
+                        <Gauges:LinearRange StartValue="21" EndValue="28" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" ></Gauges:LinearRange>
+                    </Gauges:LinearScale.Ranges>
+                </Gauges:LinearScale>
+            </Gauges:SfLinearGauge.MainScale>
+        </Gauges:SfLinearGauge>
+
+        <!--<Controls:Gauge x:Name="masterBrGauge" HorizontalAlignment="Left" Height="143" Margin="414,41,0,0" VerticalAlignment="Top" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <Controls:Gauge x:Name="natesroomGauge" HorizontalAlignment="Left" Height="143" Margin="605,41,0,0" VerticalAlignment="Top" Width="144" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <Controls:Gauge x:Name="livingroomGauge" HorizontalAlignment="Left" Margin="167,139,0,346" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <Controls:Gauge x:Name="officeGauge" HorizontalAlignment="Left" Height="143" Margin="414,206,0,0" VerticalAlignment="Top" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <Controls:Gauge x:Name="backroomGauge" HorizontalAlignment="Left" Height="143" Margin="605,206,0,0" VerticalAlignment="Top" Width="144" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>-->
 
     </Grid>
 </Page>

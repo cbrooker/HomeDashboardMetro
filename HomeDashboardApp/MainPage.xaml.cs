@@ -17,8 +17,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Net;
 
-
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
+using Syncfusion.Data.Extensions;
+using Syncfusion.UI.Xaml.Gauges;
 
 namespace HomeDashboardApp
 {
@@ -57,7 +58,7 @@ namespace HomeDashboardApp
             this.navigationHelper.SaveState += navigationHelper_SaveState;
 
 
-            
+            LoadGaugeValues();
 
 
         }
@@ -67,24 +68,20 @@ namespace HomeDashboardApp
 
             var masterBr = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=5&apikey=4598c7bc07e9c7380df636265340beea");
             var natesroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=3&apikey=4598c7bc07e9c7380df636265340beea");
-            
-            
-            //var natesroom = MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=3&apikey=4598c7bc07e9c7380df636265340beea");
-            //var livingroom = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "2", Title = "Living Room", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=2&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-            //var office = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "10", Title = "Office", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=10&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-            //var backroom = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "4", Title = "Play Room", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=4&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-
-            //var natesroom = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "3", Title = "Nate's Room", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=3&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-            //var livingroom = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "2", Title = "Living Room", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=2&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-            //var office = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "10", Title = "Office", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=10&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
-            //var backroom = RenderRazorViewToString("_houseTempTemplate", new HouseTempsModel() { Id = "4", Title = "Play Room", Temperature = new WebClient().DownloadString("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=4&apikey=4598c7bc07e9c7380df636265340beea").Replace("\"", "") });
+            var livingroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=2&apikey=4598c7bc07e9c7380df636265340beea");
+            var office = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=10&apikey=4598c7bc07e9c7380df636265340beea");
+            var backroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=4&apikey=4598c7bc07e9c7380df636265340beea");
 
 
+            LinearScale1.Pointers.ForEach(p => p.Value = Double.Parse(masterBr.Replace("\"", "")));
 
+//            Testgauge.va
+            //masterBrGauge.Value = Double.Parse(masterBr.Replace("\"", ""));
+            //natesroomGauge.Value = Double.Parse(natesroom.Replace("\"", ""));
+            //livingroomGauge.Value = Double.Parse(livingroom.Replace("\"", ""));
+            //officeGauge.Value = Double.Parse(office.Replace("\"", ""));
+            //backroomGauge.Value = Double.Parse(backroom.Replace("\"", ""));
 
-
-            Gauge1.Value = Double.Parse(masterBr.Replace("\"", ""));
-            Gauge2.Value = Double.Parse(natesroom.Replace("\"", ""));
         }
 
 
