@@ -1,0 +1,1071 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeDashboardApp"
+    xmlns:common="using:HomeDashboardApp.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinRTXamlToolkit.Controls"
+    xmlns:gauges="using:Syncfusion.UI.Xaml.Gauges"
+
+    x:Name="PageRoot"
+    x:Class="HomeDashboardApp.MainPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <Grid RequestedTheme="Light" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFFCFFF5" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+
+        <!-- Back button and page title -->
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=PageRoot}"
+				Style="{StaticResource NavigationBackButtonNormalStyle}"
+				VerticalAlignment="Top"
+				AutomationProperties.Name="Back"
+				AutomationProperties.AutomationId="BackButton"
+				AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="Home Dashboard" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="500" Margin="120,0,0,0" Grid.Row="1" Background="#FFD1DBBD">
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="155" Margin="20,222,0,0" Background="#FF91AA9D">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+            </Grid>
+            <TextBlock HorizontalAlignment="Left" Margin="40,280,0,0" TextWrapping="Wrap" Text="Average" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="AverageTemp" HorizontalAlignment="Left" Margin="40,222,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="48" Foreground="#FF193441"/>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="155" Margin="185,222,0,0" Background="#FF91AA9D">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+            </Grid>
+            <TextBlock HorizontalAlignment="Left" Margin="201,280,0,0" TextWrapping="Wrap" Text="Humidity" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="20,20,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <TextBlock x:Name="Humidity" HorizontalAlignment="Left" Margin="201,222,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="48" Foreground="#FF193441"/>
+            <TextBlock HorizontalAlignment="Left" Margin="40,68,0,0" TextWrapping="Wrap" Text="Outside" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="OutsideTemp2" HorizontalAlignment="Left" Margin="40,20,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="185,20,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="340,20,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="20,120,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <TextBlock HorizontalAlignment="Left" Margin="201,68,0,0" TextWrapping="Wrap" Text="Master" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="MasterTemp" HorizontalAlignment="Left" Margin="201,20,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="185,120,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="140" Margin="340,119,0,0">
+                <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF4FFDE" Offset="0"/>
+                        <GradientStop Color="#FFD1DBBD" Offset="0.478"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+            </Grid>
+            <TextBlock HorizontalAlignment="Left" Margin="40,170,0,0" TextWrapping="Wrap" Text="Living" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="LivingTemp" HorizontalAlignment="Left" Margin="39,122,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+            <TextBlock HorizontalAlignment="Left" Margin="200,170,0,0" TextWrapping="Wrap" Text="Office" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="OfficeTemp" HorizontalAlignment="Left" Margin="200,122,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+            <TextBlock HorizontalAlignment="Left" Margin="360,170,0,0" TextWrapping="Wrap" Text="Back" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+            <TextBlock x:Name="BackTemp" HorizontalAlignment="Left" Margin="360,122,0,0" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+            <!--<gauges:SfLinearGauge x:Name="SfLinearGauge1"  Orientation="Vertical" Margin="-490,-138,-142,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="LivingRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="406,-35,625,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge2" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-388,-138,-99,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="MasterBedroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge3" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-281,-138,-262,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="NatesRoomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+
+        	<gauges:SfLinearGauge x:Name="SfLinearGauge4" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-162,-138,-281,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="OfficeGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>
+
+        	
+			<gauges:SfLinearGauge x:Name="SfLinearGauge5" Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Stretch" Margin="-58,-138,-385,-234" >
+        		<gauges:SfLinearGauge.MainScale>
+        			<gauges:LinearScale x:Name="BackroomGauge" ScaleDirection="Backward" ScaleBarLength="325"  
+        				ScaleBarSize="40" ScaleBarStroke="Transparent"
+        				Minimum="17" Maximum="22" Interval="1" MinorTicksPerInterval="10"
+        				MajorTickSize="15" MinorTickSize="8" LabelSize="13" LabelOffset="5"
+        				MajorTickStroke="#FF3C3C3C" MinorTickStroke="#FF1D1D1D" LabelStroke="#FF3C3C3C"
+        				RangePosition="Above" TickPosition="Above" LabelPosition="Above" Margin="437,-35,529,66">
+        				<gauges:LinearScale.Pointers>
+        					<gauges:LinearPointer PointerType="SymbolPointer" SymbolPointerStroke="#414d4f" SymbolPointerStyle="Triangle" SymbolPointerPosition="Cross" Value="0"/>
+        				</gauges:LinearScale.Pointers>
+        				<gauges:LinearScale.Ranges>
+        					<gauges:LinearRange StartValue="17" EndValue="18" StartWidth="10" EndWidth="10" RangeStroke="LightSkyBlue" RangeOpacity="1"/>
+        					<gauges:LinearRange StartValue="18" EndValue="21" StartWidth="10" EndWidth="10" RangeStroke="Green" RangeOpacity="1" />
+        					<gauges:LinearRange StartValue="21" EndValue="22" StartWidth="10" EndWidth="10" RangeStroke="Red" RangeOpacity="1" />
+        				</gauges:LinearScale.Ranges>
+        			</gauges:LinearScale>
+        		</gauges:SfLinearGauge.MainScale>
+        	</gauges:SfLinearGauge>-->
+
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="481,68,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Nate" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="21.333" Foreground="#FF193441"/>
+        <TextBlock x:Name="NateTemp" HorizontalAlignment="Left" Margin="481,20,0,0" Grid.Row="1" TextWrapping="Wrap" Text="--c" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="40" Foreground="#FF193441"/>
+
+
+        <controls:Gauge x:Name="masterBrGauge" HorizontalAlignment="Left" Height="143" Margin="625,20,0,0" VerticalAlignment="Top" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <controls:Gauge x:Name="natesroomGauge" HorizontalAlignment="Left" Height="143" Margin="905,20,0,0" VerticalAlignment="Top" Width="144" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White" Value="26"/>
+        <controls:Gauge x:Name="livingroomGauge" HorizontalAlignment="Left" Margin="167,139,0,346" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <controls:Gauge x:Name="officeGauge" HorizontalAlignment="Left" Height="143" Margin="414,206,0,0" VerticalAlignment="Top" Width="143" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+        <controls:Gauge x:Name="backroomGauge" HorizontalAlignment="Left" Height="143" Margin="605,206,0,0" VerticalAlignment="Top" Width="144" Maximum="30" Unit="c" ValueStringFormat="0.0" ScaleWidth="10" Grid.Row="1" BorderThickness="1" NeedleBrush="#FF1248FF" TrailBrush="#FF0051FF" ScaleBrush="White" TickBrush="White"/>
+
+    </Grid>
+</Page>

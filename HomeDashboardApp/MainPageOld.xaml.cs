@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 using HomeDashboardApp.Common;
 using System;
 using System.Collections.Generic;
@@ -14,16 +15,18 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Net;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
-using HomeDashboardApp.Models;
+using Syncfusion.Data.Extensions;
+using Syncfusion.UI.Xaml.Gauges;
 
 namespace HomeDashboardApp
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPageOld : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -47,13 +50,71 @@ namespace HomeDashboardApp
         }
 
 
-        public MainPage()
+        public MainPageOld()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+
+
+            LoadGaugeValues();
+
+
         }
+
+        private async void LoadGaugeValues()
+        {
+
+            var masterBr = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=5&apikey=4598c7bc07e9c7380df636265340beea");
+            var natesroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=3&apikey=4598c7bc07e9c7380df636265340beea");
+            var livingroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=2&apikey=4598c7bc07e9c7380df636265340beea");
+            var office = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=10&apikey=4598c7bc07e9c7380df636265340beea");
+            var backroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=4&apikey=4598c7bc07e9c7380df636265340beea");
+            var outside = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=18&apikey=4598c7bc07e9c7380df636265340beea");
+            var humidity = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=17&apikey=4598c7bc07e9c7380df636265340beea");
+
+            OutsideTemp.Text = String.Format("{0:0.0}c", Double.Parse(outside.Replace("\"", "")));
+            LivingTemp.Text = String.Format("{0:0.0}c", Double.Parse(livingroom.Replace("\"", "")));
+            OfficeTemp.Text = String.Format("{0:0.0}c", Double.Parse(office.Replace("\"", "")));
+            BackTemp.Text = String.Format("{0:0.0}c", Double.Parse(backroom.Replace("\"", "")));
+            NateTemp.Text = String.Format("{0:0.0}c", Double.Parse(natesroom.Replace("\"", "")));
+            MasterTemp.Text = String.Format("{0:0.0}c", Double.Parse(masterBr.Replace("\"", "")));
+            
+            Humidity.Text = String.Format("{0:0.0}%", Double.Parse(humidity.Replace("\"", ""))); ;
+
+            var avgTemp = (Double.Parse(livingroom.Replace("\"", "")) +
+                            Double.Parse(office.Replace("\"", "")) +
+                            Double.Parse(backroom.Replace("\"", "")) +
+                            Double.Parse(natesroom.Replace("\"", "")) +
+                            Double.Parse(masterBr.Replace("\"", ""))) / 5;
+
+            AverageTemp.Text = String.Format("{0:0.0}c", avgTemp);
+
+
+            //LivingRoomGauge.Pointers.ForEach(p => p.Value = Double.Parse(livingroom.Replace("\"", "")));
+            //MasterBedroomGauge.Pointers.ForEach(p => p.Value = Double.Parse(masterBr.Replace("\"", "")));
+            //NatesRoomGauge.Pointers.ForEach(p => p.Value = Double.Parse(natesroom.Replace("\"", "")));
+            //OfficeGauge.Pointers.ForEach(p => p.Value = Double.Parse(office.Replace("\"", "")));
+            //BackroomGauge.Pointers.ForEach(p => p.Value = Double.Parse(backroom.Replace("\"", "")));
+
+            //masterBrGauge.Value = Double.Parse(masterBr.Replace("\"", ""));
+            //natesroomGauge.Value = Double.Parse(natesroom.Replace("\"", ""));
+            //livingroomGauge.Value = Double.Parse(livingroom.Replace("\"", ""));
+            //officeGauge.Value = Double.Parse(office.Replace("\"", ""));
+            //backroomGauge.Value = Double.Parse(backroom.Replace("\"", ""));
+
+        }
+
+
+
+        private async Task<string> MakeWebRequest(string url)
+        {
+            var http = new System.Net.Http.HttpClient();
+            var response = await http.GetAsync(url);
+            return await response.Content.ReadAsStringAsync();
+        }
+
 
         /// <summary>
         /// Populates the page with content passed during navigation. Any saved state is also
@@ -96,9 +157,6 @@ namespace HomeDashboardApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-
-            LoademoncmsValues();
-            
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -108,48 +166,9 @@ namespace HomeDashboardApp
 
         #endregion
 
-
-
-        private async void LoademoncmsValues()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //var emoncmsIds = new int[] {5, 3, 2, 10, 4, 18, 17};
-
-            var masterBr = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=5&apikey=4598c7bc07e9c7380df636265340beea");
-            var natesroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=3&apikey=4598c7bc07e9c7380df636265340beea");
-            var livingroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=2&apikey=4598c7bc07e9c7380df636265340beea");
-            var office = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=10&apikey=4598c7bc07e9c7380df636265340beea");
-            var backroom = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=4&apikey=4598c7bc07e9c7380df636265340beea");
-            var outside = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=18&apikey=4598c7bc07e9c7380df636265340beea");
-            var humidity = await MakeWebRequest("http://home.chrisbrooker.ca:83/emoncms/feed/value.json?id=17&apikey=4598c7bc07e9c7380df636265340beea");
-
-            var emoncmsValueCollection = new EmoncmsCollection();
-            
-            emoncmsValueCollection.Add(new emoncmsItem() { Name="Office", Value = String.Format("{0:0.0}c", Double.Parse(office.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Living", Value = String.Format("{0:0.0}c", Double.Parse(livingroom.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Backroom", Value = String.Format("{0:0.0}c", Double.Parse(backroom.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Nate's", Value = String.Format("{0:0.0}c", Double.Parse(natesroom.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Master", Value = String.Format("{0:0.0}c", Double.Parse(masterBr.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Outside", Value = String.Format("{0:0.0}c", Double.Parse(outside.Replace("\"", ""))) });
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Humidity", Value = String.Format("{0:0.0}%", Double.Parse(humidity.Replace("\"", ""))) });
-
-            var avgTemp = (Double.Parse(livingroom.Replace("\"", "")) +
-                            Double.Parse(office.Replace("\"", "")) +
-                            Double.Parse(backroom.Replace("\"", "")) +
-                            Double.Parse(natesroom.Replace("\"", "")) +
-                            Double.Parse(masterBr.Replace("\"", ""))) / 5;
-
-            emoncmsValueCollection.Add(new emoncmsItem() { Name = "Average", Value = String.Format("{0:0.0}c", avgTemp) });
-
-            EmoncmsGridView.ItemsSource = emoncmsValueCollection;
-
-        }
-
-
-        private async Task<string> MakeWebRequest(string url)
-        {
-            var http = new System.Net.Http.HttpClient();
-            var response = await http.GetAsync(url);
-            return await response.Content.ReadAsStringAsync();
+            LoadGaugeValues();
         }
     }
 }
